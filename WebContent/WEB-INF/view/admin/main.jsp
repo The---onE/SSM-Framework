@@ -31,6 +31,6 @@
 <body>
 	<div>后台主页</div>
 	
-	<div>欢迎<%=admin.getName()%></div>
+	<div>欢迎<%=admin.getUsername()%></div>
 </body>
 </html>

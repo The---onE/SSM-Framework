@@ -15,8 +15,8 @@ public class AdminService implements IAdminService {
 	private AdminMapper adminDao;
 
 	@Override
-	public Admin login(String name, String pwd) {
-		return adminDao.login(name, pwd);
+	public Admin login(String username, String password) {
+		return adminDao.selectByNamePwd(username, password);
 	}
 	
 }

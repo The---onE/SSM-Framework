@@ -1,13 +1,17 @@
 package xmx.model;
 
+import java.util.Date;
+
 public class Admin {
     private Integer id;
 
-    private String name;
+    private String username;
 
-    private String pwd;
+    private String password;
 
-    private Integer authority;
+    private Integer state;
+
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -17,27 +21,35 @@ public class Admin {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd == null ? null : pwd.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public Integer getAuthority() {
-        return authority;
+    public Integer getState() {
+        return state;
     }
 
-    public void setAuthority(Integer authority) {
-        this.authority = authority;
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

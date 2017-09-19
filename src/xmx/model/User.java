@@ -5,27 +5,21 @@ import java.util.Date;
 public class User {
     private Integer id;
 
-    private String name;
+    private String username;
 
-    private String pwd;
+    private String password;
 
-    private String realname;
-
-    private String sex;
-
-    private String hobbys;
-
-    private String birthday;
-
-    private String city;
+    private String phone;
 
     private String email;
 
-    private String qq;
+    private String birthday;
 
-    private Date createtime;
+    private String sex;
 
     private Integer state;
+
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -35,60 +29,28 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd == null ? null : pwd.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public String getRealname() {
-        return realname;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setRealname(String realname) {
-        this.realname = realname == null ? null : realname.trim();
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
-    }
-
-    public String getHobbys() {
-        return hobbys;
-    }
-
-    public void setHobbys(String hobbys) {
-        this.hobbys = hobbys == null ? null : hobbys.trim();
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday == null ? null : birthday.trim();
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getEmail() {
@@ -99,20 +61,20 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getQq() {
-        return qq;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
+    public void setBirthday(String birthday) {
+        this.birthday = birthday == null ? null : birthday.trim();
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public String getSex() {
+        return sex;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public Integer getState() {
@@ -121,5 +83,13 @@ public class User {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

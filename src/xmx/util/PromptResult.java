@@ -1,11 +1,8 @@
 package xmx.util;
 
-import java.util.List;
-
-public class ListResult<T> {
+public class PromptResult {
 	private int status;
 	private String prompt;
-	private List<T> list;
 
 	public int getStatus() {
 		return status;
@@ -21,13 +18,5 @@ public class ListResult<T> {
 
 	public void setPrompt(String prompt) {
 		this.prompt = prompt;
-	}
-
-	public List<T> getList() {
-		return list;
-	}
-
-	public void setList(List<T> list) {
-		this.list = list;
 	}
 }
