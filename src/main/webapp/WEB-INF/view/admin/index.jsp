@@ -9,12 +9,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<base href="<%=basePath%>">
-<script src="<%=basePath%>jquery/jquery-2.2.4.min.js"
-	type="text/javascript"></script>
-<title>后台首页</title>
+<link rel="shortcut icon" href="image/favicon.ico">
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<title>后台登录页</title>
 <script type="text/javascript">
 	$(function() {
 		$('#login').click(function() {
