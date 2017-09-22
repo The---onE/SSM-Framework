@@ -1,11 +1,14 @@
 package xmx.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import xmx.dao.AdminMapper;
 import xmx.model.Admin;
+import xmx.model.AdminExample;
 import xmx.service.IAdminService;
 
 @Service("adminService")
@@ -16,7 +19,15 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public Admin login(String username, String password) {
-		return adminDao.selectByNamePwd(username, password);
+		AdminExample example = new AdminExample();
+		example.or().andUsernameEqualTo(username).andPasswordEqualTo(password);
+		List<Admin> admins = adminDao.selectByExample(example);
+		if (admins != null && admins.size() > 0) {
+			return admins.get(0);
+		}
+		return null;
+		
+//		return adminDao.selectByNamePwd(username, password);
 	}
 	
 }
