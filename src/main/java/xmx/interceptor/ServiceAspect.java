@@ -41,7 +41,9 @@ public class ServiceAspect {
 		Object[] params = joinPoint.getArgs();
 		StringBuffer param = new StringBuffer();
 		for (Object o : params) {
-			if (o instanceof String) {
+			if (o == null) {
+				param.append("?_?");
+			} else if (o instanceof String) {
 				param.append(o);
 			} else if (o.getClass().isPrimitive()) {
 				param.append(o);

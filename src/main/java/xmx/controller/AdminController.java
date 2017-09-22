@@ -44,21 +44,26 @@ public class AdminController {
 		ObjectResult<Admin> result = new ObjectResult<>();
 		Gson gson = new Gson();
 		try {
-			Admin admin = adminService.login(name, pwd);
-			if (admin != null) {
-				result.setStatus(1);
-				result.setPrompt("登录成功");
-				result.setObject(admin);
-				
-				session.setAttribute("admin", admin);
+			if (name != null && name.trim().length() > 0 && pwd != null && pwd.trim().length() > 0) {
+				Admin admin = adminService.login(name, pwd);
+				if (admin != null) {
+					result.setStatus(1);
+					result.setPrompt("登录成功");
+					result.setObject(admin);
+					
+					session.setAttribute("admin", admin);
+				} else {
+					result.setStatus(-3);
+					result.setPrompt("用户名或密码错误");
+				}
 			} else {
-				result.setStatus(0);
-				result.setPrompt("用户名或密码错误");
+				result.setStatus(-2);
+				result.setPrompt("用户名或密码不能为空");
 			}
 			return gson.toJson(result);
 		} catch (Exception e) {
 			e.printStackTrace();
-			result.setStatus(0);
+			result.setStatus(-1);
 			result.setPrompt("登录失败");
 			return gson.toJson(result);
 		}

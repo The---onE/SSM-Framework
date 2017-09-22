@@ -29,7 +29,7 @@
 				return;
 			}
 			$.ajax({
-				url: '<%=basePath%>Admin/login',
+				url: 'Admin/login',
 				type: 'post',
 				data: {
 					name: name,
