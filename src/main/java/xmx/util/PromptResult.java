@@ -1,6 +1,6 @@
 package xmx.util;
 
-public class PromptResult {
+public class PromptResult extends Result {
 	private int status;
 	private String prompt;
 
@@ -8,15 +8,19 @@ public class PromptResult {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	@Override
+	public PromptResult setStatus(int status) {
 		this.status = status;
+		return this;
 	}
 
 	public String getPrompt() {
 		return prompt;
 	}
 
-	public void setPrompt(String prompt) {
+	@Override
+	public PromptResult setPrompt(String prompt) {
 		this.prompt = prompt;
+		return this;
 	}
 }
