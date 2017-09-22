@@ -19,6 +19,7 @@
 <base href="<%=basePath%>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="image/favicon.ico">
 <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
 <title>后台主页</title>
 <script type="text/javascript">

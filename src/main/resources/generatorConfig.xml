@@ -29,6 +29,7 @@
         <!-- 修改要映射的表，设置是否生成Example方法 -->
         <table tableName="user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
         <table tableName="admin" domainObjectName="Admin" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+        <table tableName="log" domainObjectName="Log" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>  
     <!-- 命令 : java -jar mybatis-generator-core-1.3.5.jar -configfile generatorConfig.xml -overwrite -->
 </generatorConfiguration>  
