@@ -11,9 +11,15 @@ import xmx.model.Admin;
 import xmx.model.AdminExample;
 import xmx.service.IAdminService;
 
+/**
+ * 管理员服务实现
+ * 
+ * @author The_onE
+ *
+ */
 @Service("adminService")
 public class AdminService implements IAdminService {
-	
+
 	@Resource
 	private AdminMapper adminDao;
 
@@ -26,8 +32,8 @@ public class AdminService implements IAdminService {
 			return admins.get(0);
 		}
 		return null;
-		
-//		return adminDao.selectByNamePwd(username, password);
+
+		// return adminDao.selectByNamePwd(username, password);
 	}
-	
+
 }

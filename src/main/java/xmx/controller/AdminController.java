@@ -11,11 +11,17 @@ import xmx.model.Admin;
 import xmx.service.IAdminService;
 import xmx.util.ObjectResult;
 
+/**
+ * 后台控制器
+ * 
+ * @author The_onE
+ *
+ */
 @Controller
 @RequestMapping("/Admin")
 public class AdminController {
 	/**
-	 * Service层
+	 * 业务层
 	 */
 	@Resource
 	private IAdminService adminService;

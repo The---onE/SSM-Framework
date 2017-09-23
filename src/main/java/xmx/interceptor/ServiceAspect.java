@@ -20,10 +20,16 @@ import xmx.model.Log;
 import xmx.model.User;
 import xmx.util.IPUtil;
 
+/**
+ * 业务层切面
+ * 
+ * @author The_onE
+ *
+ */
 @Component
 @Aspect
 public class ServiceAspect {
-	
+
 	@Resource
 	private LogMapper logDao;
 
@@ -33,12 +39,13 @@ public class ServiceAspect {
 
 	@After("point()")
 	public void doAfter(JoinPoint joinPoint) {
+		// 当前请求
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
-		String ip = IPUtil.getIP(request);
-		String target = joinPoint.getTarget().getClass().getSimpleName();
-		String method = joinPoint.getSignature().toString();
-		Object[] params = joinPoint.getArgs();
+		String ip = IPUtil.getIP(request); // 请求IP
+		String target = joinPoint.getTarget().getClass().getSimpleName(); // 所在类类名
+		String method = joinPoint.getSignature().toString(); // 方法名
+		Object[] params = joinPoint.getArgs(); // 参数
 		StringBuffer param = new StringBuffer();
 		for (Object o : params) {
 			if (o == null) {
@@ -53,8 +60,8 @@ public class ServiceAspect {
 			param.append(" ");
 		}
 		HttpSession session = request.getSession();
-		String user = "";
-		String userType = "";
+		String user = ""; // 用户名
+		String userType = ""; // 用户类型
 		Object o;
 		o = session.getAttribute("admin");
 		if (o != null && o instanceof Admin) {
@@ -68,6 +75,7 @@ public class ServiceAspect {
 			}
 		}
 
+		// 生成日志
 		Log log = new Log();
 		log.setType("service");
 		log.setTarget(target);
@@ -76,7 +84,7 @@ public class ServiceAspect {
 		log.setUser(user);
 		log.setUserType(userType);
 		log.setIp(ip);
-
+		// 记录日志
 		logDao.insertSelective(log);
 	}
 
