@@ -25,6 +25,7 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public Admin login(String username, String password) {
+		// 根据用户名密码查询管理员
 		AdminExample example = new AdminExample();
 		example.or().andUsernameEqualTo(username).andPasswordEqualTo(password);
 		List<Admin> admins = adminDao.selectByExample(example);

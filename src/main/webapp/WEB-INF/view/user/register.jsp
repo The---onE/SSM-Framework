@@ -14,12 +14,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="image/favicon.ico">
 <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<title>后台登录页</title>
+<title>前台注册页</title>
 <script type="text/javascript">
 	$(function() {
-		$('#login').click(function() {
+		$('#register').click(function() {
 			var name = $('#name').val();
 			var pwd = $('#pwd').val();
+			var pwd2 = $('#pwd2').val();
 			if (name.length == 0) {
 				alert('用户名不能为空');
 				return;
@@ -28,18 +29,22 @@
 				alert('密码不能为空');
 				return;
 			}
+			if (pwd != pwd2) {
+				alert('两次输入密码不一致');
+				return;
+			}
 			$.ajax({
-				url: 'Admin/login',
+				url: 'User/register.action',
 				type: 'post',
 				data: {
-					name: name,
-					pwd: pwd
+					username: name,
+					password: pwd
 				},
 				dataType: 'json',
 				success: function(result) {
 					if (result.status == 1) {
 						alert(result.prompt);
-						window.location.href = 'Admin/main';
+						window.location.href = 'User/index';
 					} else {
 						alert(result.prompt);
 					}
@@ -61,7 +66,10 @@
 			密码<input id="pwd" type="password">
 		</div>
 		<div>
-			<input id="login" type="button" value="登录">
+			确认密码<input id="pwd2" type="password">
+		</div>
+		<div>
+			<input id="register" type="button" value="注册">
 		</div>
 	</div>
 </body>

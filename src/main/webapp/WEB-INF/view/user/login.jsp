@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="image/favicon.ico">
 <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<title>后台登录页</title>
+<title>前台登录页</title>
 <script type="text/javascript">
 	$(function() {
 		$('#login').click(function() {
@@ -29,7 +29,7 @@
 				return;
 			}
 			$.ajax({
-				url: 'Admin/login',
+				url: 'User/login.action',
 				type: 'post',
 				data: {
 					name: name,
@@ -39,7 +39,7 @@
 				success: function(result) {
 					if (result.status == 1) {
 						alert(result.prompt);
-						window.location.href = 'Admin/main';
+						window.location.href = 'User/index';
 					} else {
 						alert(result.prompt);
 					}

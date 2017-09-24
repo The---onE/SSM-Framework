@@ -10,11 +10,22 @@ import xmx.model.User;
  */
 public interface IUserService {
 	/**
-	 * 通过用户ID获取用户
+	 * 用户登录
 	 * 
-	 * @param userId
-	 *            用户ID
-	 * @return 用户信息
+	 * @param name
+	 *            用户名
+	 * @param pwd
+	 *            密码
+	 * @return 登录成功返回用户信息，登录失败返回null
 	 */
-	public User getUserById(int userId);
+	public User login(String name, String pwd);
+
+	/**
+	 * 注册
+	 * 
+	 * @param user
+	 *            用户信息
+	 * @return 注册成功返回1，用户名已被注册返回0，注册失败返回-1
+	 */
+	public int register(User user);
 }
