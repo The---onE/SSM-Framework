@@ -6,10 +6,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import xmx.model.User;
 import xmx.service.IUserService;
 import xmx.util.ObjectResult;
+import xmx.util.PromptResult;
 
 /**
  * 前台控制器
@@ -25,17 +27,23 @@ public class UserController {
 	 */
 	@Resource
 	private IUserService userService;
-	
+
 	/**
 	 * 前台首页
 	 * 
 	 * @return 前台首页页面
 	 */
 	@RequestMapping(value = "/index")
-	public String index() {
-		return "user/index";
+	public ModelAndView index(HttpSession session) {
+		ModelAndView mav = new ModelAndView("user/index");
+
+		Object o = session.getAttribute("user");
+		if (o != null && o instanceof User) {
+			mav.addObject("user", (User) o);
+		}
+		return mav;
 	}
-	
+
 	/**
 	 * 前台登录页
 	 * 
@@ -80,7 +88,7 @@ public class UserController {
 			return result.setStatus(-1).setPrompt("登录失败").toJson();
 		}
 	}
-	
+
 	/**
 	 * 前台注册页
 	 * 
@@ -94,10 +102,8 @@ public class UserController {
 	/**
 	 * 注册请求
 	 * 
-	 * @param name
-	 *            用户名
-	 * @param pwd
-	 *            密码
+	 * @param user
+	 *            用户信息
 	 * @param session
 	 *            当前Session
 	 * @return 注册信息
@@ -113,6 +119,8 @@ public class UserController {
 				int re = userService.register(user);
 				if (re > 0) {
 					result.setStatus(1).setPrompt("注册成功");
+
+					session.setAttribute("user", userService.login(name, pwd));
 				} else if (re == 0) {
 					result.setStatus(-3).setPrompt("该用户名已被注册");
 				} else {
@@ -124,7 +132,28 @@ public class UserController {
 			return result.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return result.setStatus(-1).setPrompt("登录失败").toJson();
+			return result.setStatus(-1).setPrompt("注册失败").toJson();
+		}
+	}
+
+	/**
+	 * 注销请求
+	 * 
+	 * @param session
+	 *            当前Session
+	 * @return 注销信息
+	 */
+	@RequestMapping(value = "/logout.action", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String logoutRequest(HttpSession session) {
+		PromptResult result = new PromptResult();
+		try {
+			session.removeAttribute("user");
+
+			return result.setStatus(1).setPrompt("注销成功").toJson();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result.setStatus(-1).setPrompt("注销失败").toJson();
 		}
 	}
 }
